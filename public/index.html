@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Push-Benachrichtigungen mit Node.js</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="push_styles.css">
+    <link rel="stylesheet" href="matrix_styles.css">
+    
+       
+</head>
+<body>
+    <div class="page-container">
+        <div class="page-row" style="font-family:verdana;">MR Mathe</div>
+        <div class="page-row">
+
+           
+            <div id="matrix-container" class="matrix"></div>
+
+
+        <div id="matrix"></div>
+        </div>
+        <div class="page-row">
+            <div>
+                <button id="subscribe" class="mibu" style="background-color:orange;">abonnieren</button>
+                <button id="unsubscribe" class="mibu">abmelden</button>
+                <input type="text" id="notificationMessage" placeholder="Nachricht eingeben" style="width:192px;background-color:#ccf;border:none;margin-left:5px;">
+                <input type="text" id="clickurl" placeholder="clickurl eingeben" style="width:192px;background-color:#03034b;border:none;margin-left:5px;color:#FFF;margin:5px;">
+                <button id="sendNotification" class="mibu" style="background-color:#ccf;">senden</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="push_script.js"></script>
+    <script src="matrix_font.js"></script>
+    <script src="matrix_script.js"></script>
+    
+</body>
+<script>
+function getParameterByName(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Funktion zur Anzeige der Buttons basierend auf dem Parameter "abo"
+        function displayButtons() {
+            const aboParam = getParameterByName('abo');
+            const subscribeButton = document.getElementById('subscribe');
+            const unsubscribeButton = document.getElementById('unsubscribe');
+            const subBu = document.getElementById('sendNotification');
+            const sendInh = document.getElementById('notificationMessage');
+            const clicku = document.getElementById('clickurl');
+            subBu.style.display = 'none';
+            sendInh.style.display = 'none';
+            clicku.style.display = 'none';
+
+            if (aboParam === 'send') {
+                subBu.style.display = 'block';
+                sendInh.style.display = 'block';
+                clicku.style.display = 'none';
+            }
+
+            if (aboParam === 'off') {
+                subscribeButton.style.display = 'none';
+                unsubscribeButton.style.display = 'block';
+                matrixNamespace.displayText('ABO OFF');
+            } else {
+                subscribeButton.style.display = 'block';
+                unsubscribeButton.style.display = 'none';
+                matrixNamespace.displayText('ABO ON');
+                changeMatrixColor("orange");
+                //document.getElementById('subscribe').click();
+            }
+        }
+        function changeMatrixColor(colo) {
+            const nodeList = document.querySelectorAll(".matrix-filled");
+            for (let i = 0; i < nodeList.length; i++) {
+            nodeList[i].style.backgroundColor = colo;
+            }
+        }
+ 
+
+        
+        changeMatrixColor('#ff0000'); // Ändert die Farbe der ausgefüllten Pixel zu Rot
+        displayButtons();
+
+
+
+</script>
+</html>

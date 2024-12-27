@@ -1,0 +1,37 @@
+.matrix#matrix-uberschrift {
+    background-color: #FFF;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 24px;
+    color: #000;
+}
+
+.matrix#matrix-container {
+    display: grid;
+    grid-template-columns: repeat(150, 1fr);
+    width: 100%;
+    height: 100%;
+    gap: 1px;
+    background-color: #2e2d2d; /* Dunkelgrau für den Abstand */
+}
+
+.matrix .matrix-square {
+    width: 100%;
+    padding-bottom: 100%; /* Macht das Quadrat proportional */
+    background-color: black;
+}
+
+.matrix .matrix-filled {
+    background-color: #1100ff;
+}
+.matrix-orange{
+    background-color: #ffa200; 
+}
+.mibu{
+    width:200px;
+    margin:5px;
+    border:none;
+    cursor:pointer;
+}

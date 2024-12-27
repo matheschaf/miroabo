@@ -1,0 +1,28 @@
+.page-container {
+    width: 100%;
+}
+.page-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px 0;
+}
+
+
+/* Medienabfragen für Smartphones */
+@media (max-width: 600px) {
+    .page-row {
+        padding: 10px;
+        margin: 5px 0;
+    }
+    #matrix {
+        height: 150px; /* Anpassen für kleinere Bildschirme */
+    }
+    button, input {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
